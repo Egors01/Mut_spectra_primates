@@ -4,10 +4,10 @@ from setuptools import setup
 setup(
     name='Mut_spectra_primates',
     version='0.1',
-    packages=find_packages(),
-    url='',
+    packages=['Mut_spectra_primates'],
+    url='https://github.com/Egors01/Mut_spectra_primates',
     license='',
     author='egors',
-    author_email='',
+    author_email='none',
     description=''
 )
