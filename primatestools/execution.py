@@ -1,7 +1,7 @@
 from pandas import DataFrame
 
-from species_storage import SpeciesStorage
-import mspectools as mstools
+from primatestools.species_storage import SpeciesStorage
+from primatestools import mspectools as mstools
 import pandas as pd
 
 chimp = SpeciesStorage(name='Chimpanzee',type='ensebml')

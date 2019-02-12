@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Mut_spectra_lib.iml" filepath="$PROJECT_DIR$/.idea/Mut_spectra_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Mut_spectra_primates/.idea/Mut_spectra_primates.iml" filepath="$PROJECT_DIR$/../Mut_spectra_primates/.idea/Mut_spectra_primates.iml" />
     </modules>
   </component>
 </project>
