@@ -31,6 +31,7 @@ setup(
     license='',
     author='egors',
     author_email='none',
+    distclass=BinaryDistribution,
     description=''
 )
 #print(extra_files)
