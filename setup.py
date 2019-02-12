@@ -2,10 +2,10 @@ from setuptools import  find_packages
 from setuptools import setup
 
 setup(
-    name='primatestools',
+    name='Mut_spectra_primates',
     version='0.1',
-    packages=['primatestools'],
-    url='https://github.com/Egors01/Mut_spectra_primates',
+    packages=find_packages(),
+    url='',
     license='',
     author='egors',
     author_email='',
