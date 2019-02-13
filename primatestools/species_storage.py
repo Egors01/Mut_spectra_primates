@@ -1,7 +1,3 @@
-import os
-
-import matplotlib
-import seaborn as sns
 import pandas as pd
 class SpeciesStorage():
     def __init__(self,name,assembly_name='',type='',ident=''):
