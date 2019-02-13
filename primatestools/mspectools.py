@@ -1,10 +1,5 @@
-import os
-
-import matplotlib
 
 import pandas as pd
-import  seaborn as sns
-
 
 def bed_to_columns(bed_df, polym=True, rev_col=False):
     bed_data = bed_df
