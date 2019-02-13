@@ -51,8 +51,8 @@ def normalize_frequencies_192_context(m192, context_abundance_matrix, matrix_col
             context_abundance_matrix.loc[
                 context_abundance_matrix["Context"] == full_context][
                 name].item()
-        m192_m.ix[idx, sp_colname] = m192_m.ix[
-                                       idx, sp_colname] / denominator
+        m192_m.ix[idx, sp_colname] = float(m192_m.ix[
+                                       idx, sp_colname]) / float(denominator)
 
     m192_norm_sum = normalize_matrix_to_type_sum(m192_m)
 

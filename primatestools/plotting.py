@@ -37,10 +37,10 @@ def create_ratio_table(m96, sp_name_to_col_name):
         second = pair[1]
         colname_first = sp_name_to_col_name[first]
         colname_second = sp_name_to_col_name[second]
-        relations_df[first + ' vs ' + second] = float(m96[colname_first]) / float(m96[
-            colname_second])
-        relations_df[second + ' vs ' + first] = float(m96[colname_second]) / float(m96[
-            colname_first])
+        m96[colname_first] = m96[colname_first].astype(float)
+        m96[colname_second] = m96[colname_second].astype(float)
+        relations_df[first + ' vs ' + second] = m96[colname_first] / m96[colname_second]
+        relations_df[second + ' vs ' + first] = m96[colname_second] / m96[colname_first]
     return relations_df
 
 def create_heatmap_df_for_species( relations_df, species_column_name,
