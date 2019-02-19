@@ -1,6 +1,9 @@
 
 import pandas as pd
 
+from primatestools.constants import MutConstants
+
+
 def bed_to_columns(bed_df, polym=True, rev_col=False):
     bed_data = bed_df
     bed_data['chromStart'] = bed_df['chromStart'].astype(int)
@@ -29,12 +32,16 @@ def gen192_matrix_from_bed_df(bed_data, name='species'):
     df = bed_data.groupby(['SUBS', 'Context']).size().reset_index(
         name=name)
     df.sort_values(by=['SUBS', "Context"], inplace=True)
-    uniq_types = df['SUBS'] + df['Context']
-    if len(uniq_types.unique()) != 96:
-        Exception('SHAPE ERROR ')
-    result[name] = df[name]
-    result['SUBS'] = df['SUBS']
-    result['Context'] = df['Context']
+    if df.shape[0]==192:
+        result[name] = df[name]
+        result['SUBS'] = df['SUBS']
+        result['Context'] = df['Context']
+    else:
+        result['Context']= pd.Series(MutConstants().context192)
+        result['SUBS'] = pd.Series(MutConstants().subs192)
+        result = pd.merge(result, df, left_on=['SUBS', 'Context'],right_on=['SUBS', 'Context'], how='outer').fillna(0)
+        result = result.sort_values(by=['SUBS', "Context"])
+        #result[name] = 0.0
     return result
 
 
@@ -163,3 +170,8 @@ def reduce_192_to_96_common_notation(m192):
     m96 = normalize_matrix_to_type_sum(matrix=m96)
 
     return m96
+
+def get_ref_startpos(chrname):
+    startpos_df = pd.read_csv('start_positions.csv',sep='\t')
+    startpos = startpos_df[chrname].values[0]
+    return startpos

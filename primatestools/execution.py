@@ -9,6 +9,8 @@ from primatestools.plotting import plot_heatmaps
 # chimp_bed_df = mstools.bed_to_columns(bed_df=chimp.variant_df,polym=False)
 m192_dfs = {}
 m96_dfs = {}
+
+
 # [pd.DataFrame(),pd.DataFrame]
 for i, name in enumerate(['pantro_sample.bed', 'pantro_sample2.bed']):
     sp_name = 'chimp' + str(i)
