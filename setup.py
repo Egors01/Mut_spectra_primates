@@ -25,7 +25,7 @@ extra_files = package_files('primatestools')
 #print (find_packages())
 setup(
     name='primatestools',
-    version='0.2',
+    version='0.3',
     packages=find_packages(),
     url='https://github.com/Egors01/Mut_spectra_primates',
     license='',
