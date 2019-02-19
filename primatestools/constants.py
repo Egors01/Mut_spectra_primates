@@ -1,6 +1,3 @@
-
-
-
 class MutConstants():
 
     def __init__(self):
@@ -123,3 +120,25 @@ class MutConstants():
              ['Gorilla', 'Gorilla_P'],
              ['Orang', 'Orang_P']]
         ]
+        self.start_positions_ucsc = {'chr1': 10917,
+                                     'chr10': 10803,
+                                     'chr11': 60000,
+                                     'chr12': 11163,
+                                     'chr13': 18172207,
+                                     'chr14': 16022637,
+                                     'chr15': 19830514,
+                                     'chr16': 10000,
+                                     'chr17': 60000,
+                                     'chr18': 11107,
+                                     'chr19': 60000,
+                                     'chr2': 11309,
+                                     'chr20': 66336,
+                                     'chr21': 5010000,
+                                     'chr22': 10510000,
+                                     'chr3': 11706,
+                                     'chr4': 11527,
+                                     'chr5': 11282,
+                                     'chr6': 60000,
+                                     'chr7': 10238,
+                                     'chr8': 60000,
+                                     'chr9': 10336}

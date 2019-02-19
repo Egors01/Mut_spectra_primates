@@ -46,7 +46,8 @@ def gen192_matrix_from_bed_df(bed_data, name='species'):
 
 
 def normalize_frequencies_192_context(m192, context_abundance_matrix, matrix_colname):
-    m192_m = m192
+
+    m192_m = m192[m192.columns.values]
     m192_m['Full_context'] = m192_m['Context'].str[0] + m192_m['SUBS'].str[0] + \
                              m192_m['Context'].str[-1]
     name = matrix_colname
@@ -100,7 +101,8 @@ def normalize_matrix_to_type_sum( matrix):
 
 
 def reduce_192_to_96_kelley_notation(m192):
-    m192m = m192.copy(deep=True)
+    m192m = m192[m192.columns.values]
+    #m192m = m192.copy(deep=True)
     colname_to_sp_name = dict(zip(
         [x for x in m192m.columns.values if x != 'SUBS' and x != 'Context'],
         [x.split('_')[0] for x in m192m.columns.values if
@@ -131,12 +133,13 @@ def reduce_192_to_96_kelley_notation(m192):
 
     m96 = m192m.groupby(['SUBS', 'Context'], as_index=False).sum()
 
-    m96 = normalize_matrix_to_type_sum(matrix=m96)
+    m96_res = normalize_matrix_to_type_sum(matrix=m96)
 
-    return m96
+    return m96_res
 
 def reduce_192_to_96_common_notation(m192):
-    m192m = m192.copy(deep=True)
+    m192m = m192[m192.columns.values]
+    #m192m = m192.copy(deep=True)
     colname_to_sp_name = dict(zip(
         [x for x in m192m.columns.values if x != 'SUBS' and x != 'Context'],
         [x.split('_')[0] for x in m192m.columns.values if
@@ -167,9 +170,9 @@ def reduce_192_to_96_common_notation(m192):
 
     m96 = m192m.groupby(['SUBS', 'Context'], as_index=False).sum()
 
-    m96 = normalize_matrix_to_type_sum(matrix=m96)
+    m96_res = normalize_matrix_to_type_sum(matrix=m96)
 
-    return m96
+    return m96_res
 
 def get_ref_startpos(chrname):
     startpos_df = pd.read_csv('start_positions.csv',sep='\t')

@@ -1,6 +1,9 @@
 import pandas as pd
 
 from primatestools import mspectools as mstools
+from primatestools.mspectools import gen192_matrix_from_bed_df, \
+    normalize_frequencies_192_context, reduce_192_to_96_common_notation, \
+    reduce_192_to_96_kelley_notation
 from primatestools.plotting import plot_heatmaps
 
 # chimp = SpeciesStorage(name='Chimpanzee',type='ensebml')
@@ -31,8 +34,19 @@ setlist = [
     [['chimpanzee', 'chimpanzee2'],
      ['chimpanzee2', 'chimpanzee']]
 ]
-plot_heatmaps(m96=m96, sp_plotname_to_col_name=sp_dict,
-              pictures_sets_list=setlist, title='test')
+CM = pd.read_csv('/home/egors/Mut_spectra_primates/primatestools/context_abundance.csv',sep='\t')
+m192 = gen192_matrix_from_bed_df(bed_data=loaded_df, name=sp_name)
+m192_mut_norm = normalize_frequencies_192_context(
+    context_abundance_matrix=CM, matrix_colname='hg38',
+    m192=m192)
+m96_common = reduce_192_to_96_common_notation(m192=m192)
+m96_kelly = reduce_192_to_96_kelley_notation(m192=m192)
+m96_mut_norm = reduce_192_to_96_common_notation(m192=m192_mut_norm)
+m96_mut_norm_kelley = reduce_192_to_96_kelley_notation(
+    m192=m192_mut_norm)
+
+# plot_heatmaps(m96=m96, sp_plotname_to_col_name=sp_dict,
+#               pictures_sets_list=setlist, title='test')
 # chimp.m96_common = mstools.reduce_192_to_96_common_notation(m192=m192)
 # #chimp.m96 = m96
 # context_ab_matrix = pd.read_csv('context_abundance.csv',sep='\t')
